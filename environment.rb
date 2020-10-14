@@ -1,5 +1,4 @@
 require_relative "./lib/api"
-require_relative "./lib/author"
 require_relative "./lib/book"
 require_relative "./lib/cli"
 
