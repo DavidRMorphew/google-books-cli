@@ -1,4 +1,4 @@
 Google Books CLI
 
-This CLI grabs the top forty books that are free to download from Google Books.
+This CLI provides a list of books on Programming that are free to download from Google Books (in PDF format).
 
