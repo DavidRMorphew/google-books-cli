@@ -9,19 +9,17 @@ class API
         array_of_books = hash["items"]
         array_of_books.each do |book_hash|
             binding.pry
-            # mass_assignment_hash = Hash.new
-            # mass_assignment_hash["title"] = book_hash["volumeInfo"]["title"]
-            
-            book = Book.new
-            book.title = book_hash["volumeInfo"]["title"]
-            book.subtitle = book_hash["volumeInfo"]["subtitle"]
-            book.author = book_hash["volumeInfo"]["authors"]
-            book.pdf_link = book_hash["accessInfo"]["pdf"]["acsTokenLink"]
-            book.epub_link = book_hash["accessInfo"]["epub"]["acsTokenLink"]
-            book.publication_date = book_hash["volumeInfo"]["publishedDate"]
-            book.description = book_hash["volumeInfo"]["description"]
-            book.categories = book_hash["volumeInfo"]["categories"]
+            assignment_hash = Hash.new
+            assignment_hash["authors"] = book_hash["volumeInfo"]["authors"]
+            assignment_hash["title"] = book_hash["volumeInfo"]["title"]
+            assignment_hash["subtitle"] = book_hash["volumeInfo"]["subtitle"]
+            assignment_hash["description"] = book_hash["volumeInfo"]["description"]
+            assignment_hash["publication_date"] = book_hash["volumeInfo"]["publishedDate"]
+            assignment_hash["link"] = book_hash["accessInfo"]["pdf"]["acsTokenLink"]+"\n"+book_hash["accessInfo"]["epub"]["acsTokenLink"]
 
+            book = Book.new(assignment_hash)
+            
+            
              
             # new hash for mass assignment with initialize in Book class
 
@@ -34,6 +32,7 @@ class API
                 book.isbn_nums = nil
             end
         end
+
         # parse for the languages here with method to be used above
         # parse for isbns with a method here
     end

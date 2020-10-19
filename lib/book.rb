@@ -1,5 +1,5 @@
 class Book
-    attr_accessor :title, :subtitle, :author, :pdf_link, :epub_link, :publication_date, :description, :categories, :isbn_nums
+    attr_accessor :title, :subtitle, :authors, :pdf_link, :epub_link, :publication_date, :description, :isbn_nums, :languages
     @@all = []
     def initialize
         @@all << self
