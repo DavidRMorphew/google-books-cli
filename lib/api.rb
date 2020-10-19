@@ -1,6 +1,6 @@
 class API
     def self.fetch_free_books
-        url = "https://www.googleapis.com/books/v1/volumes?q=object+programming&download=epub&filter=free-ebooks&filter=full&printType=books&maxResults=40"
+        url = "https://www.googleapis.com/books/v1/volumes?q=object+oriented+computer+programming&download=epub&filter=free-ebooks&filter=full&printType=books&maxResults=40"
         
         uri = URI(url)
         response = Net::HTTP.get(uri)
