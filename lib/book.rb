@@ -8,4 +8,10 @@ class Book
     def self.all
         @@all
     end
+
+    def self.only_with_free_pdf
+        puts "This class method for only_with_free_pdf is being called."
+        binding.pry
+        self.all.select {|book| book.pdf_link}
+    end
 end
