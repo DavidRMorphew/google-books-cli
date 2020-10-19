@@ -17,6 +17,9 @@ class API
             book.description = book_hash["volumeInfo"]["description"]
             book.categories = book_hash["volumeInfo"]["categories"]
 
+            # new hash for mass assignment with initialize in Book class
+
+            # it's ok to parse this here from the API
             if book_hash["volumeInfo"]["industryIdentifiers"]
                 book.isbn_nums = book_hash["volumeInfo"]["industryIdentifiers"].collect do |isbn_hash| 
                     "#{isbn_hash["type"].gsub("_"," ")}: #{isbn_hash["identifier"]}"
@@ -25,14 +28,6 @@ class API
                 book.isbn_nums = nil
             end
         end
-        
-        # title & subtitle
-        # author
-        # publication year
-        # description
-        # ISBN?
-        # categories [=genre]
-        # filter for acsTokenLink - eliminates books not in free pdf format
-        # array_of_books[0]["accessInfo"]["pdf"]["acsTokenLink"]
+    
     end
 end
