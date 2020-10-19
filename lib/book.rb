@@ -1,7 +1,8 @@
 class Book
     attr_accessor :title, :subtitle, :authors, :pdf_link, :epub_link, :publication_date, :description, :isbn_nums, :languages
     @@all = []
-    def initialize
+    def initialize(assignment_hash)
+        
         @@all << self
         @languages = [] # this is going to be the array of languages attributes
         # set up language method for the instance that searches and assigns all of the languages that 
