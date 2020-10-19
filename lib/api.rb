@@ -10,7 +10,15 @@ class API
         array_of_books = hash["items"]
         array_of_books.each do |book_hash|   
             assignment_hash = {}
-            assignment_hash[:authors] = book_hash["volumeInfo"]["authors"].map {|name| name.split(" ").map {|name_part| name_part.capitalize}.join(" ")}
+            assignment_hash[:authors] = book_hash["volumeInfo"]["authors"].map do |name| 
+                name.split(" ").map do |name_part| 
+                    if name_part.length == 1
+                        (name_part += ".").capitalize
+                    else
+                        name_part.capitalize
+                    end
+                end.join(" ")
+            end
             assignment_hash[:title] = book_hash["volumeInfo"]["title"]
             assignment_hash[:subtitle] = book_hash["volumeInfo"]["subtitle"]
             assignment_hash[:description] = book_hash["volumeInfo"]["description"]
