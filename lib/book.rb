@@ -14,9 +14,11 @@ class Book
         self.all.select {|book| book.pdf_link || book.epub_link}
     end
 
-    def self.on_java
+    def self.find_by_language(language)
+    end
+
+    def self.find_books_on_java
         self.all.select do |book|
-            binding.pry
             book.title.match?(/Java\b/) || (book.subtitle.match?(/Java\b/) if book.subtitle) || (book.description.match?(/Java\b/) if book.description)
         end
     end
