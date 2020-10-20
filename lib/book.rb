@@ -1,8 +1,8 @@
 class Book
-    attr_accessor :authors, :title, :subtitle, :description, :publication_date, :link, :isbn_nums, :languages
+    attr_accessor :authors, :title, :subtitle, :description, :publication_date, :pdf_link, :epub_link, :isbn_nums, :languages
     @@all = []
     def initialize(assignment_hash)
-        assignment_hash.each {|key, value| self.send(("#{key}="), value)}
+        assignment_hash.each {|key, value| self.send(("#{key}="), value) if value}
         @@all << self
         @languages = [] # this is going to be the array of languages attributes
         # set up language method for the instance that searches and assigns all of the languages that 
@@ -12,10 +12,7 @@ class Book
         @@all
     end
 
-    # select books with epub or pdf link
-    # def self.with_link
-    #     self.all.select {|book| book.pdf_link || book.epub_link}
-    # end
+  
 
     def self.find_by_language(language)
     end
