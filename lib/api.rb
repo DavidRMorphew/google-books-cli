@@ -51,8 +51,10 @@ class API
             # assignment_hash[:languages] = languages
 
             assignment_hash[:languages] = PROGRAMMING_LANGUAGES.select do |language|
-                # assignment_hash.values.match?(/#{language}\b/)
-                assignment_hash[:title].match?(/#{language}\b/) || (assignment_hash[:description].match?(/#{language}\b/) if assignment_hash[:description]) || (assignment_hash[:subtitle].match?(/#{language}\b/) if assignment_hash[:subtitle])
+                [:title, :subtitle, :description].any? do |attribute_key|
+                    assignment_hash[attribute_key].match?(/#{language}\b/) if assignment_hash[attribute_key]
+                end
+                # assignment_hash[:title].match?(/#{language}\b/) || (assignment_hash[:description].match?(/#{language}\b/) if assignment_hash[:description]) || (assignment_hash[:subtitle].match?(/#{language}\b/) if assignment_hash[:subtitle])
             end
             
 
