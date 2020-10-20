@@ -22,32 +22,28 @@ class API
                     end
                 end.join(" ")
             end
+
             assignment_hash[:title] = book_hash["volumeInfo"]["title"]
             assignment_hash[:subtitle] = book_hash["volumeInfo"]["subtitle"] if book_hash["volumeInfo"]["subtitle"]
             assignment_hash[:description] = book_hash["volumeInfo"]["description"]
             assignment_hash[:publication_date] = book_hash["volumeInfo"]["publishedDate"]
                       
-            # pdf_link = book_hash["accessInfo"]["pdf"]["acsTokenLink"]
-            # epub_link = book_hash["accessInfo"]["epub"]["acsTokenLink"]
-            book_hash["accessInfo"].map do |key, value|
+            assignment_hash[:links] = book_hash["accessInfo"].map do |key, value|
                 # binding.pry
                 if key == "pdf" || key == "epub"
-                    assignment_hash[:"#{key}_link"] = value["acsTokenLink"]
+                    "#{key.upcase} link: #{value["acsTokenLink"]}"
                 end
-            end
+            end.compact
             
             if book_hash["volumeInfo"]["industryIdentifiers"]
-                isbn_values = book_hash["volumeInfo"]["industryIdentifiers"].collect do |isbn_hash|
+                isbn_values = book_hash["volumeInfo"]["industryIdentifiers"].map do |isbn_hash|
                         "#{isbn_hash["type"].gsub("_"," ")}: #{isbn_hash["identifier"]}"
                     end
-                else
-                    isbn_values = nil
-                end
+            else
+                isbn_values = nil
+            end
             assignment_hash[:isbn_nums] = isbn_values
-
             
-            
-
             assignment_hash[:languages] = PROGRAMMING_LANGUAGES.select do |language|
                 [:title, :subtitle, :description].any? do |attribute_key|
                     assignment_hash[attribute_key].match?(/#{language}\b/) if assignment_hash[attribute_key]
@@ -55,7 +51,6 @@ class API
                 # assignment_hash[:title].match?(/#{language}\b/) || (assignment_hash[:description].match?(/#{language}\b/) if assignment_hash[:description]) || (assignment_hash[:subtitle].match?(/#{language}\b/) if assignment_hash[:subtitle])
             end
             
-
             book = Book.new(assignment_hash)
         end
     end

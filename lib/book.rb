@@ -1,5 +1,5 @@
 class Book
-    attr_accessor :authors, :title, :subtitle, :description, :publication_date, :pdf_link, :epub_link, :isbn_nums, :languages
+    attr_accessor :authors, :title, :subtitle, :description, :publication_date, :links, :isbn_nums, :languages
     @@all = []
     def initialize(assignment_hash)
         assignment_hash.each {|key, value| self.send(("#{key}="), value) if value && value != []}
