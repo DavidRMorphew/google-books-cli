@@ -27,12 +27,13 @@ class API
             assignment_hash[:description] = book_hash["volumeInfo"]["description"]
             assignment_hash[:publication_date] = book_hash["volumeInfo"]["publishedDate"]
                       
-            if book_hash["accessInfo"]["pdf"]["acsTokenLink"]
-                assignment_hash[:pdf_link] = "PDF link: "+book_hash["accessInfo"]["pdf"]["acsTokenLink"]
-            end
-
-            if book_hash["accessInfo"]["epub"]["acsTokenLink"]
-                assignment_hash[:epub_link] = "Epub link: "+book_hash["accessInfo"]["epub"]["acsTokenLink"]
+            # pdf_link = book_hash["accessInfo"]["pdf"]["acsTokenLink"]
+            # epub_link = book_hash["accessInfo"]["epub"]["acsTokenLink"]
+            book_hash["accessInfo"].map do |key, value|
+                # binding.pry
+                if key == "pdf" || key == "epub"
+                    assignment_hash[:"#{key}_link"] = value["acsTokenLink"]
+                end
             end
             
             if book_hash["volumeInfo"]["industryIdentifiers"]
@@ -45,10 +46,7 @@ class API
             assignment_hash[:isbn_nums] = isbn_values
 
             
-            # languages = PROGRAMMING_LANGUAGES.collect do |language|
-            #     language if assignment_hash[:title].match?(/language\b/) || (assignment_hash[:subtitle].match?(/language\b/) if assignment_hash[:subtitle]) || (assignment_hash[:description].match?(/language\b/) if assignment_hash[:description])
-            #     end
-            # assignment_hash[:languages] = languages
+            
 
             assignment_hash[:languages] = PROGRAMMING_LANGUAGES.select do |language|
                 [:title, :subtitle, :description].any? do |attribute_key|
