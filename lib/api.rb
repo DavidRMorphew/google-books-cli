@@ -44,12 +44,17 @@ class API
                 end
             assignment_hash[:isbn_nums] = isbn_values
 
-            # assignment_hash[:languages] = languages
-            # languages = PROGRAMMING_LANGUAGES.select do |language|
-            #     binding.pry
-            #     assignment_hash[:title].match?(/language\b/) || (assignment_hash[:subtitle].match?(/language\b/) if assignment_hash[:subtitle]) || (assignment_hash[:description].match?(/language\b/) if assignment_hash[:description])
+            
+            # languages = PROGRAMMING_LANGUAGES.collect do |language|
+            #     language if assignment_hash[:title].match?(/language\b/) || (assignment_hash[:subtitle].match?(/language\b/) if assignment_hash[:subtitle]) || (assignment_hash[:description].match?(/language\b/) if assignment_hash[:description])
             #     end
-                
+            # assignment_hash[:languages] = languages
+
+            assignment_hash[:languages] = PROGRAMMING_LANGUAGES.select do |language|
+                assignment_hash[:title].match?(/#{language}\b/) || (assignment_hash[:description].match?(/#{language}\b/) if assignment_hash[:description]) || (assignment_hash[:subtitle].match?(/#{language}\b/) if assignment_hash[:subtitle])
+            end
+            
+
             book = Book.new(assignment_hash)
         end
     end
