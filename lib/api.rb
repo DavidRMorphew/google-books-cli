@@ -30,7 +30,7 @@ class API
                       
             assignment_hash[:links] = book_hash["accessInfo"].map do |key, value|
                 # binding.pry
-                if key == "pdf" || key == "epub"
+                if (key == "pdf" || key == "epub") && value["acsTokenLink"]
                     "#{key.upcase} link: #{value["acsTokenLink"]}"
                 end
             end.compact
