@@ -63,12 +63,18 @@ class CLI
     end
 
     def display_book_details(book)
-        puts "\n Title: #{book.title}. #{book.subtitle if book.subtitle}"
+        if book.subtitle
+            puts "\n Title: #{book.title}: #{book.subtitle}"
+        else
+            puts "\n Title: #{book.title}"
+        end
+
         if book.authors.count == 1 
             puts " Author: #{book.authors.first}"
         else
             puts " Authors: #{book.authors.join(", ")}"
         end
+        
         puts " Date of (Online) Publication: #{book.publication_date}" if book.publication_date
         puts " Description: #{book.description}" if book.description
         puts " Some Common Languages Covered: #{book.languages.join(", ")}" if book.languages

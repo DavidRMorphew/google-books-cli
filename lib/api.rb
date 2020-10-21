@@ -40,7 +40,6 @@ class API
                     end if book_hash["volumeInfo"]["industryIdentifiers"]
             
             assignment_hash[:languages] = PROGRAMMING_LANGUAGES.select do |language|
-                # binding.pry
                 if language == "C"
                     language = "\sC[^+#a-z]"
                     [:title, :subtitle, :description].any? do |attribute_key|
