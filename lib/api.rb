@@ -21,7 +21,7 @@ class API
                         name_part.capitalize
                     end
                 end.join(" ")
-            end
+            end if book_hash["volumeInfo"]["authors"]
 
             assignment_hash[:title] = book_hash["volumeInfo"]["title"]
             assignment_hash[:subtitle] = book_hash["volumeInfo"]["subtitle"] 

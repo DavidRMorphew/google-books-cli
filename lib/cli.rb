@@ -5,15 +5,15 @@ class CLI
     def start
         @first_ask = "yes"
         @full_exit = "no"
-        puts "\nWelcome!".red
+        puts "\nWelcome!".light_blue
         API.fetch_free_books
         self.book_list_by_title
     end
 
     def book_list_by_title
         if @first_ask == "yes"
-            puts "\nWould you like to see a list of books by title?"
-            puts " Type 'yes' to see the book list or any other key to exit."
+            puts "\nWould you like to see a list of books by title?".light_red
+            puts " Type 'yes' to see the book list or any other key to exit.".light_red
             @first_ask = "no"
         else
             puts "\nWould you like to see the list of books by titles again?"
@@ -21,22 +21,21 @@ class CLI
         end
         
         user_input = gets.strip.downcase
-        # if the user says yes, provide a book list by titles
         if user_input == "yes" || user_input == "y"
-            puts "\nEnjoy browsing by title!\n\n"
+            puts "\nEnjoy browsing by title!\n".light_yellow
             sleep(1)
-            # display the book list by titles
-            # self.display_books_by_title
+           
             self.display_books_by_title
             self.ask_user_for_book_choice
-            # binding.pry
-            self.book_list_by_title unless @full_exit = "yes"
+            self.book_list_by_title unless @full_exit == "yes"
+        else
+            self.exit_program
         end
     end
 
     def display_books_by_title
         Book.all.each.with_index(1) do |book, index|    
-            puts "(#{index}) #{book.title}"
+            puts "(#{index}) ".light_blue + "#{book.title}".light_magenta
         end
     end
 
@@ -58,10 +57,9 @@ class CLI
             selected_book_instance = Book.all[index]
             display_book_details(selected_book_instance)
         elsif user_input.downcase == 'exit'
-            puts "Goodbye!"
-            @full_exit = "yes"
+            self.exit_program
         else
-            ask_user_for_book_choice
+            self.ask_user_for_book_choice
         end
     end
 
@@ -85,5 +83,10 @@ class CLI
         puts " Links: #{book.links.join(", ")}" if book.links
 
         sleep(2)
+    end
+
+    def exit_program
+        puts "\nGoodbye! Feel free to come back!\n".light_blue
+        @full_exit = "yes"
     end
 end
