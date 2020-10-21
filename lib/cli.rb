@@ -9,7 +9,7 @@ class CLI
     def book_list_by_title
         # give user the option to see a book list by title
         # list out the books by their titles and subtitles, if there are subtitles
-        puts "Would you like to see a list of books by their titles?"
+        puts "Would you like to see a list of books by title?"
         puts "Type 'yes' to see the book list or any other key to exit."
         
         user_input = gets.strip.downcase
@@ -22,6 +22,8 @@ class CLI
     end
 
     def display_books_by_title
-        binding.pry
+        Book.all.each.with_index(1) do |book, index|    
+            puts "(#{index}.) #{book.title}" 
+        end
     end
 end
