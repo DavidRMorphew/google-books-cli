@@ -1,7 +1,7 @@
 require 'pry'
 
 class API
-    PROGRAMMING_LANGUAGES = ["Java", "C#", "Python", "JavaScript", "Ruby", "Eiffel", "C++"]
+    PROGRAMMING_LANGUAGES = ["C", "C#", "C++", "Java", "Python", "JavaScript", "Ruby", "Eiffel"]
 
     def self.fetch_free_books
         url = "https://www.googleapis.com/books/v1/volumes?q=object+oriented+computer+programming&download=epub&filter=free-ebooks&filter=full&printType=books&maxResults=40&key=#{ENV["GBOOKS_API_KEY"]}"
@@ -41,12 +41,26 @@ class API
             
             assignment_hash[:languages] = PROGRAMMING_LANGUAGES.select do |language|
                 # binding.pry
-                language.gsub("+","\+")
-                language.gsub("#", "\#")
-                [:title, :subtitle, :description].any? do |attribute_key|
-                    assignment_hash[attribute_key].match?(/#{language}\b/) if assignment_hash[attribute_key]
+                if language == "C"
+                    language = "\sC[^+#a-z]"
+                    [:title, :subtitle, :description].any? do |attribute_key|
+                        assignment_hash[attribute_key].match?(/#{language}/) if assignment_hash[attribute_key]
+                    end
+                elsif language == "C++"
+                    language = "\sC[+]{2}"
+                    [:title, :subtitle, :description].any? do |attribute_key|
+                        assignment_hash[attribute_key].match?(/#{language}/) if assignment_hash[attribute_key]
+                    end
+                elsif language == "C#"
+                    language = "\sC[#]"
+                    [:title, :subtitle, :description].any? do |attribute_key|
+                        assignment_hash[attribute_key].match?(/#{language}/) if assignment_hash[attribute_key]
+                    end
+                else
+                    [:title, :subtitle, :description].any? do |attribute_key|
+                        assignment_hash[attribute_key].match?(/#{language}\b/) if assignment_hash[attribute_key]
+                    end
                 end
-                # assignment_hash[:title].match?(/#{language}\b/) || (assignment_hash[:description].match?(/#{language}\b/) if assignment_hash[:description]) || (assignment_hash[:subtitle].match?(/#{language}\b/) if assignment_hash[:subtitle])
             end
             
             book = Book.new(assignment_hash)
