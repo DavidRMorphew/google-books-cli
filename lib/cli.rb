@@ -4,7 +4,8 @@ class CLI
 
     def start
         @first_ask = "yes"
-        puts "\nWelcome!"
+        @full_exit = "no"
+        puts "\nWelcome!".red
         API.fetch_free_books
         self.book_list_by_title
     end
@@ -28,7 +29,8 @@ class CLI
             # self.display_books_by_title
             self.display_books_by_title
             self.ask_user_for_book_choice
-            self.book_list_by_title
+            # binding.pry
+            self.book_list_by_title unless @full_exit = "yes"
         end
     end
 
@@ -57,6 +59,7 @@ class CLI
             display_book_details(selected_book_instance)
         elsif user_input.downcase == 'exit'
             puts "Goodbye!"
+            @full_exit = "yes"
         else
             ask_user_for_book_choice
         end

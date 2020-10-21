@@ -9,7 +9,7 @@ require 'dotenv/load'
 require 'pry'
 require 'net/http'
 require 'json'
-require "awesome_print"
-ap object, options = {}
+require "colorize"
+
 # Require awesome-print gem here after you get things running. It's a flourish, not essential.
 
