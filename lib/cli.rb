@@ -1,18 +1,23 @@
 class CLI
-    @ask_count = 0
+    # ask about this approach
+    
 
     def start
+        @first_ask = "yes"
         puts "\nWelcome!"
         API.fetch_free_books
-        # binding.pry
         self.book_list_by_title
     end
 
     def book_list_by_title
-        # give user the option to see a book list by title
-        # list out the books by their titles and subtitles, if there are subtitles
-        puts "\nWould you like to see a list of books by title?"
-        puts " Type 'yes' to see the book list or any other key to exit."
+        if @first_ask == "yes"
+            puts "\nWould you like to see a list of books by title?"
+            puts " Type 'yes' to see the book list or any other key to exit."
+            @first_ask = "no"
+        else
+            puts "\nWould you like to see the list of books by titles again?"
+            puts " Type 'yes' to see the book list or any other key to exit."
+        end
         
         user_input = gets.strip.downcase
         # if the user says yes, provide a book list by titles
@@ -23,6 +28,7 @@ class CLI
             # self.display_books_by_title
             self.display_books_by_title
             self.ask_user_for_book_choice
+            self.book_list_by_title
         end
     end
 
@@ -40,11 +46,8 @@ class CLI
     # end
 
     def ask_user_for_book_choice
-        if @ask_count == 0
-            puts "\nEnter the number of a book for more information."
-            puts "   To exit, type 'exit'."
-            @ask_count += 1
-        end
+        puts "\nPlease enter a number between 1 and #{Book.all.length} for more information on a book." 
+        puts " Or type 'exit' to exit."
         
         user_input = gets.strip
         index = user_input.to_i - 1
@@ -55,13 +58,23 @@ class CLI
         elsif user_input.downcase == 'exit'
             puts "Goodbye!"
         else
-            puts "Please enter a number between 1 and #{Book.all.length} for more information on a book" 
-            puts "Or type 'exit' to exit."
             ask_user_for_book_choice
         end
     end
 
     def display_book_details(book)
-        puts "Title: '#{book.title}. #{book.subtitle if book.subtitle}'"
+        puts "\n Title: #{book.title}. #{book.subtitle if book.subtitle}"
+        if book.authors.count == 1 
+            puts " Author: #{book.authors.first}"
+        else
+            puts " Authors: #{book.authors.join(", ")}"
+        end
+        puts " Date of (Online) Publication: #{book.publication_date}" if book.publication_date
+        puts " Description: #{book.description}" if book.description
+        puts " Some Common Languages Covered: #{book.languages.join(", ")}" if book.languages
+        puts " ISBN Identification: #{book.isbn_nums.join(", ")}" if book.isbn_nums
+        puts " Links: #{book.links.join(", ")}" if book.links
+
+        sleep(2)
     end
 end

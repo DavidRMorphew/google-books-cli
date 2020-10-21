@@ -1,7 +1,7 @@
 require 'pry'
 
 class API
-    PROGRAMMING_LANGUAGES = ["Java", "C++", "C#", "Python", "JavaScript", "Ruby", "Eiffel"]
+    PROGRAMMING_LANGUAGES = ["Java", "C#", "Python", "JavaScript", "Ruby", "Eiffel", "C++"]
 
     def self.fetch_free_books
         url = "https://www.googleapis.com/books/v1/volumes?q=object+oriented+computer+programming&download=epub&filter=free-ebooks&filter=full&printType=books&maxResults=40&key=#{ENV["GBOOKS_API_KEY"]}"
@@ -40,6 +40,9 @@ class API
                     end if book_hash["volumeInfo"]["industryIdentifiers"]
             
             assignment_hash[:languages] = PROGRAMMING_LANGUAGES.select do |language|
+                # binding.pry
+                language.gsub("+","\+")
+                language.gsub("#", "\#")
                 [:title, :subtitle, :description].any? do |attribute_key|
                     assignment_hash[attribute_key].match?(/#{language}\b/) if assignment_hash[attribute_key]
                 end
