@@ -1,5 +1,5 @@
 class Book
-    attr_accessor :authors, :title, :subtitle, :description, :publication_date, :links, :isbn_nums, :languages, :categories
+    attr_accessor :authors, :title, :subtitle, :description, :publication_date, :links, :categories, :isbn_nums, :languages
     @@all = []
     def initialize(assignment_hash)
         assignment_hash.each {|key, value| self.send(("#{key}="), value) if value && value != []}
@@ -12,13 +12,4 @@ class Book
 
     def self.find_by_language(language)
     end
-
-    # select books by select language covered
-    # Java
-    # C++, C#
-    # Python
-    # JavaScript
-    # Ruby
-    # Eiffel
-    
 end
