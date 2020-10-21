@@ -19,29 +19,41 @@ class CLI
             sleep(1)
             # display the book list by titles
             # self.display_books_by_title
-            self.display_books_by_attribute("title")
+            self.display_books_by_title
+            self.ask_user_for_book_choice
         end
     end
 
-    # def display_books_by_title
+    def display_books_by_title
+        Book.all.each.with_index(1) do |book, index|    
+            puts "(#{index}) #{book.title}"
+        end
+    end
+
+    # ask about this
+    # def display_books_by_attribute(attribute)
     #     Book.all.each.with_index(1) do |book, index|    
-    #         puts "(#{index}) #{book.title}"
-    #         if index % 10 == 0
-    #             sleep(2)
-    #             puts "\n"
-    #         end
+    #         puts "(#{index}) " + book.send("#{attribute}")
+    #         # if index % 10 == 0
+    #         #     sleep(2)
+    #         #     puts "\n"
+    #         # end
     #     end
     # end
 
-    def display_books_by_attribute(attribute)
-        
-        Book.all.each.with_index(1) do |book, index|    
-            # binding.pry
-            puts "(#{index})" + book.send("#{attribute}")
-            if index % 10 == 0
-                sleep(2)
-                puts "\n"
-            end
+    def ask_user_for_book_choice
+        puts "Enter the number of a book for more information."
+        puts "To exit, type 'exit'."
+        user_input = gets.strip
+        index = user_input.to_i - 1
+        binding.pry
+        if index.between?(1,40)
+            Drink.all[index]
+        elsif user_input.downcase == 'exit'
+            puts "Goodbye!"
+        else
+            puts "Please enter a number between 1 and 40 for more information on a book" 
+            puts "Or type 'exit' to exit."
         end
     end
 end
