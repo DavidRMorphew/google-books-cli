@@ -24,18 +24,17 @@ class API
             end
 
             assignment_hash[:title] = book_hash["volumeInfo"]["title"]
-            assignment_hash[:subtitle] = book_hash["volumeInfo"]["subtitle"] if book_hash["volumeInfo"]["subtitle"]
+            assignment_hash[:subtitle] = book_hash["volumeInfo"]["subtitle"] 
             assignment_hash[:description] = book_hash["volumeInfo"]["description"]
             assignment_hash[:publication_date] = book_hash["volumeInfo"]["publishedDate"]
-                      
+            assignment_hash[:categories] = book_hash["volumeInfo"]["categories"]
+         
             assignment_hash[:links] = book_hash["accessInfo"].map do |key, value|
                 if (key == "pdf" || key == "epub") && value["acsTokenLink"]
                     "#{key.upcase} link: #{value["acsTokenLink"]}"
                 end
             end.compact
             
-            assignment_hash[:categories] = book_hash["volumeInfo"]["categories"]
-
             assignment_hash[:isbn_nums] = book_hash["volumeInfo"]["industryIdentifiers"].map do |isbn_hash|
                         "#{isbn_hash["type"].gsub("_"," ")}: #{isbn_hash["identifier"]}"
                     end if book_hash["volumeInfo"]["industryIdentifiers"]
