@@ -18,21 +18,30 @@ class CLI
             puts "\nEnjoy browsing by title!\n\n"
             sleep(1)
             # display the book list by titles
-            self.display_books_by_title
+            # self.display_books_by_title
+            self.display_books_by_attribute("title")
         end
     end
 
-    def display_books_by_title
+    # def display_books_by_title
+    #     Book.all.each.with_index(1) do |book, index|    
+    #         puts "(#{index}) #{book.title}"
+    #         if index % 10 == 0
+    #             sleep(2)
+    #             puts "\n"
+    #         end
+    #     end
+    # end
+
+    def display_books_by_attribute(attribute)
+        
         Book.all.each.with_index(1) do |book, index|    
-            puts "(#{index}) #{book.title}"
+            # binding.pry
+            puts "(#{index})" + book.send("#{attribute}")
             if index % 10 == 0
                 sleep(2)
                 puts "\n"
             end
         end
     end
-
-    # def display_books_by_attribute(attribute)
-
-    # end
 end
