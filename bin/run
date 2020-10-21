@@ -2,6 +2,4 @@
 
 require_relative "../environment"
 
-puts "hi"
-
 CLI.new.start
