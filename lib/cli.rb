@@ -73,7 +73,7 @@ class CLI
         puts " Some Common Languages Covered: ".red + "#{book.languages.join(", ")}".light_red if book.languages
         puts " ISBN Identification: ".yellow + "#{book.isbn_nums.join(", ")}".light_yellow if book.isbn_nums
         puts " Links: ".cyan + "#{book.links.join(", ")}".light_cyan if book.links
-
+        
         sleep(3)
     end
 
