@@ -25,6 +25,7 @@ class CLI
             sleep(1)
            
             self.display_books_by_title
+            sleep(2)
             self.ask_user_for_book_choice
             self.book_list_by_title unless @full_exit == "yes"
         else
@@ -33,9 +34,11 @@ class CLI
     end
 
     def display_books_by_title
-        Book.all.each.with_index(1) do |book, index|    
+        puts "-------"    
+        Book.all.each.with_index(1) do |book, index|
             puts "(#{index}) ".cyan + "#{book.title}".light_green
         end
+        puts "-------"
     end
 
     def ask_user_for_book_choice
@@ -56,24 +59,25 @@ class CLI
     end
 
     def display_book_details(book)
+        puts "======="
         if book.subtitle
-            puts "\n Title: ".magenta + "#{book.title}: #{book.subtitle}".light_magenta
+            puts "\n Title: ".magenta + "#{book.title}: #{book.subtitle}\n".light_magenta
         else
-            puts "\n Title: ".magenta + "#{book.title}".light_magenta
+            puts "\n Title: ".magenta + "#{book.title}\n".light_magenta
         end
 
         if book.authors.count == 1 
-            puts " Author: ".light_red + "#{book.authors.first}".light_red
+            puts " Author: ".light_red + "#{book.authors.first}\n".light_red
         else
-            puts " Authors: ".light_red + "#{book.authors.join(", ")}".light_red
+            puts " Authors: ".light_red + "#{book.authors.join(", ")}\n".light_red
         end
         
-        puts " Date of (Online) Publication: ".blue + "#{book.publication_date}".light_blue if book.publication_date
-        puts " Description: ".green + "#{book.description}".light_green if book.description
-        puts " Some Common Languages Covered: ".red + "#{book.languages.join(", ")}".light_red if book.languages
-        puts " ISBN Identification: ".yellow + "#{book.isbn_nums.join(", ")}".light_yellow if book.isbn_nums
-        puts " Links: ".cyan + "#{book.links.join(", ")}".light_cyan if book.links
-        
+        puts " Date of (Online) Publication: ".blue + "#{book.publication_date}\n".light_blue if book.publication_date
+        puts " Description: ".green + "#{book.description}".fit(180).light_green if book.description
+        puts " Some Common Languages Covered: ".red + "#{book.languages.join(", ")}\n".light_red if book.languages
+        puts " ISBN Identification: ".yellow + "#{book.isbn_nums.join(", ")}\n".light_yellow if book.isbn_nums
+        puts " Links: ".cyan + "#{book.links.join(", ")}\n".light_cyan if book.links
+        puts "======="
         sleep(3)
     end
 
