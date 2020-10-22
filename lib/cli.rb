@@ -1,6 +1,4 @@
 class CLI
-    # ask about this approach
-    
 
     def start
         @first_ask = "yes"
@@ -13,14 +11,15 @@ class CLI
     def book_list_by_title
         if @first_ask == "yes"
             puts "\nWould you like to see a list of books by title?".light_red
-            puts " Type 'yes' to see the book list or any other key to exit.".light_red
+            puts " Type 'yes' to see the book list or any other key to exit.\n".light_red
             @first_ask = "no"
         else
-            puts "\nWould you like to see the list of books by titles again?"
-            puts " Type 'yes' to see the book list or any other key to exit."
+            puts "\nWould you like to see the list of books by titles again?".light_red
+            puts " Type 'yes' to see the book list or any other key to exit.\n".light_red
         end
         
         user_input = gets.strip.downcase
+        
         if user_input == "yes" || user_input == "y"
             puts "\nEnjoy browsing by title!\n".light_yellow
             sleep(1)
@@ -35,20 +34,13 @@ class CLI
 
     def display_books_by_title
         Book.all.each.with_index(1) do |book, index|    
-            puts "(#{index}) ".light_blue + "#{book.title}".light_magenta
+            puts "(#{index}) ".cyan + "#{book.title}".light_green
         end
     end
 
-    # ask about this
-    # def display_books_by_attribute(attribute)
-    #     Book.all.each.with_index(1) do |book, index|    
-    #         puts "(#{index}) " + book.send("#{attribute}")
-    #     end
-    # end
-
     def ask_user_for_book_choice
-        puts "\nPlease enter a number between 1 and #{Book.all.length} for more information on a book." 
-        puts " Or type 'exit' to exit."
+        puts "\nPlease enter a number between 1 and #{Book.all.length} for more information on a book.".light_red 
+        puts " Or type 'exit' to exit.\n".light_red
         
         user_input = gets.strip
         index = user_input.to_i - 1
@@ -65,24 +57,24 @@ class CLI
 
     def display_book_details(book)
         if book.subtitle
-            puts "\n Title: #{book.title}: #{book.subtitle}"
+            puts "\n Title: ".magenta + "#{book.title}: #{book.subtitle}".light_magenta
         else
-            puts "\n Title: #{book.title}"
+            puts "\n Title: ".magenta + "#{book.title}".light_magenta
         end
 
         if book.authors.count == 1 
-            puts " Author: #{book.authors.first}"
+            puts " Author: ".light_red + "#{book.authors.first}".light_red
         else
-            puts " Authors: #{book.authors.join(", ")}"
+            puts " Authors: ".light_red + "#{book.authors.join(", ")}".light_red
         end
         
-        puts " Date of (Online) Publication: #{book.publication_date}" if book.publication_date
-        puts " Description: #{book.description}" if book.description
-        puts " Some Common Languages Covered: #{book.languages.join(", ")}" if book.languages
-        puts " ISBN Identification: #{book.isbn_nums.join(", ")}" if book.isbn_nums
-        puts " Links: #{book.links.join(", ")}" if book.links
+        puts " Date of (Online) Publication: ".blue + "#{book.publication_date}".light_blue if book.publication_date
+        puts " Description: ".green + "#{book.description}".light_green if book.description
+        puts " Some Common Languages Covered: ".red + "#{book.languages.join(", ")}".light_red if book.languages
+        puts " ISBN Identification: ".yellow + "#{book.isbn_nums.join(", ")}".light_yellow if book.isbn_nums
+        puts " Links: ".cyan + "#{book.links.join(", ")}".light_cyan if book.links
 
-        sleep(2)
+        sleep(3)
     end
 
     def exit_program
