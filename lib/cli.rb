@@ -38,7 +38,7 @@ class CLI
         Book.all.each.with_index(1) do |book, index|
             puts "(#{index}) ".cyan + "#{book.title}".light_green
         end
-        puts "-------"
+        puts "-------\n"
     end
 
     def ask_user_for_book_choice
@@ -59,7 +59,7 @@ class CLI
     end
 
     def display_book_details(book)
-        puts "======="
+        puts "\n======="
         if book.subtitle
             puts "\n Title: ".magenta + "#{book.title}: #{book.subtitle}\n".light_magenta
         else
@@ -72,8 +72,8 @@ class CLI
             puts " Authors: ".light_red + "#{book.authors.join(", ")}\n".light_red
         end
         
-        puts " Date of (Online) Publication: ".blue + "#{book.publication_date}\n".light_blue if book.publication_date
-        puts " Description: ".green + "#{book.description}".fit(180).light_green if book.description
+        puts " Date of Publication: ".blue + "#{book.publication_date}\n".light_blue if book.publication_date
+        puts " Description: ".green + "#{book.description}".fit(100).light_green if book.description
         puts " Some Common Languages Covered: ".red + "#{book.languages.join(", ")}\n".light_red if book.languages
         puts " ISBN Identification: ".yellow + "#{book.isbn_nums.join(", ")}\n".light_yellow if book.isbn_nums
         puts " Links: ".cyan + "#{book.links.join(", ")}\n".light_cyan if book.links

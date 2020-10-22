@@ -1,7 +1,7 @@
 require 'pry'
 
 class API
-    PROGRAMMING_LANGUAGES = ["C", "C#", "C++", "Java", "Python", "JavaScript", "Ruby", "Eiffel"]
+    PROGRAMMING_LANGUAGES = ["C", "C#", "C++", "Java", "Python", "JavaScript", "Ruby", "Eiffel", "Smalltalk", "R"]
 
     def self.fetch_free_books
         url = "https://www.googleapis.com/books/v1/volumes?q=object+oriented+computer+programming&download=epub&filter=free-ebooks&filter=full&printType=books&maxResults=40&key=#{ENV["GBOOKS_API_KEY"]}"
