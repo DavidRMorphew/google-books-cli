@@ -61,7 +61,7 @@ class CLI
     def display_book_details(book)
         puts "\n======="
         if book.subtitle
-            puts "\n Title: ".magenta + "#{book.title}: #{book.subtitle}\n".light_magenta
+            puts "\n Title: ".magenta + "#{book.title}: #{book.subtitle}".fit(80).light_magenta
         else
             puts "\n Title: ".magenta + "#{book.title}\n".light_magenta
         end
@@ -73,10 +73,10 @@ class CLI
         end
         
         puts " Date of Publication: ".blue + "#{book.publication_date}\n".light_blue if book.publication_date
-        puts " Description: ".green + "#{book.description}".fit(100).light_green if book.description
+        puts " Description: \n".green + "#{book.description}".fit(80).light_green if book.description
         puts " Some Common Languages Covered: ".red + "#{book.languages.join(", ")}\n".light_red if book.languages
         puts " ISBN Identification: ".yellow + "#{book.isbn_nums.join(", ")}\n".light_yellow if book.isbn_nums
-        puts " Links: ".cyan + "#{book.links.join(", ")}\n".light_cyan if book.links
+        puts " Clickable Links: ".cyan + "#{book.links.join(", ")}\n".light_cyan if book.links
         puts "======="
         sleep(3)
     end
