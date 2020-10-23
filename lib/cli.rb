@@ -48,7 +48,7 @@ class CLI
         user_input = gets.strip
         index = user_input.to_i - 1
 
-        if index.between?(0,Book.all.length - 1)
+        if index.between?(0,Book.all.length - 1) && !user_input.match?(/\D/)
             selected_book_instance = Book.all[index]
             display_book_details(selected_book_instance)
         elsif user_input.downcase == 'exit'
