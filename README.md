@@ -26,7 +26,8 @@ ruby bin/run
 
 ## Usage
 
-Once started, this program greets the user and asks if they would like to see a list of books by title.
+**(1)** 
+After starting, this program greets the user and asks if they would like to see a list of books by title.
 
 ```
 Welcome to 'Object-Oriented Programming' books on Google Books!
@@ -35,7 +36,7 @@ Would you like to see a list of books by title?
  Type 'yes' to see the book list or any other key to exit.
 ```
 
-— If the user enters "yes" or "y", a numbered list of 40 titles appears. 
+— **(a)** If the user enters 'yes' or 'y', a numbered list of 40 titles appears: 
 
 ```
 Enjoy browsing by title!
@@ -48,19 +49,19 @@ Enjoy browsing by title!
 (40) The Object-Oriented Thought Process
 -------
 ```
-— Any other key exits the program with a goodbye message.
+— **(b)** Any other key exits the program with a goodbye message:
 
 ```
 Goodbye! Feel free to come back!
 ```
-If the user has chosen to browse the list of titles, they are prompted to choose a book for more details:
+**(2)** If the user has chosen to browse the list of titles **(1)(b)**, they are prompted to choose a book for more details:
 
 ```
 Please enter a number between 1 and 40 for more information on a book.
  Or type 'exit' to exit.
 ```
 
-— If the user enters a valid number between 1 and 40, without any non-digit characters, then the selected book's details will be displayed:
+— **(a)** If the user enters a valid number between 1 and 40, without any non-digit characters, then the selected book's details will be displayed:
 
 ```
 =======
@@ -79,26 +80,26 @@ Please enter a number between 1 and 40 for more information on a book.
 
 =======
 ```
-— If the user enters "exit", they are given a goodby message:
+— **(b)** If the user enters "exit", they are given a goodby message:
 
 ```
 Goodbye! Feel free to come back!
 ```
 
-— Any other user input will lead the program to repeat the prompt:
+— **(c)** Any other user input will lead the program to repeat the prompt **(2)**:
 
 ```
 Please enter a number between 1 and 40 for more information on a book.
  Or type 'exit' to exit.
  ```
 
-After seeing further details on a book, the user is then asked if they would like to see the book list again, which repeats the process of allowing the user to see the book list and select a book for more details:
+**(3)** If the user chose to see further details on a book **(2)(a)**, the user is then asked if they would like to see the book list again:
 
 ```
 Would you like to see the list of books by titles again?
  Type 'yes' to see the book list or any other key to exit.
  ```
-The user may repeat this process as long as they would like.
+The user may repeat the process of browsing books by title **(1)**, and viewing the details of a book **(2)** as many times as they would like until they choose to exit the program at **(1)(b)** or **(2)(b)**.
 
 ## Customizing Word-Wrap Output
 
