@@ -1,11 +1,15 @@
-Google Books CLI
+# Fetching and Displaying "Object-Oriented Programming" Books in Google Books
 
-This CLI provides a list of the top 40 books on Object Programming from Google Books, selected by Google Books as most relevant to the topic.
+Fetching data from the Google Books API, this CLI lets you browse the titles of the top 40 search results for books on Object-Oriented Computer Programming.
 
-In addition to the author, book-title, and book description, the user can access more information on a text, including: 
-    the publication date,
-    the category / genre of the book,
-    and links to a digital sample or full-text of the book available on Google Books.
+You, as the user, can then select a book to get more information, such as the author, subtitle, publication date, ISBN numbers (to find the book), and links that you can click on to access a digital sample or full-text of the book.
+
+## Installation
+
+```bash
+git clone git@github.com:DavidRMorphew/google-books-cli.git
+
+cd 
 
 
 
