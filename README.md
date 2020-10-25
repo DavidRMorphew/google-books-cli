@@ -4,6 +4,7 @@ Fetching data from the Google Books API, this Ruby CLI Program lets you browse t
 
 You, as the user, can then select a book to get more information such as author(s), subtitle, publication date, ISBN numbers (which you can use to find the book), and links that you can click to access a digital sample or full-text copy of the book.
 
+![Image of Old Books](https://i.imgur.com/VnY8CPB.jpg)
 
 ## Installation 
 
@@ -50,6 +51,7 @@ Enjoy browsing by title!
 (40) The Object-Oriented Thought Process
 -------
 ```
+
 * **(b)** Any other key exits the program with a goodbye message:
 
 ```
@@ -80,7 +82,10 @@ Please enter a number between 1 and 40 for more information on a book.
  Clickable Links: EPUB link: (http://books.google.com/books/download/OBJECT_ORIENTED_PROGRAMMING_WITH_JAVA-sample-epub.acsm?id=A8wnDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api, PDF link: http://books.google.com/books/download/OBJECT_ORIENTED_PROGRAMMING_WITH_JAVA-sample-pdf.acsm?id=A8wnDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api
 
 =======
+
 ```
+![Image of Books!](https://i.imgur.com/tisbV2F.jpeg)
+
 * **(b)** If the user enters "exit", they are given a goodby message:
 
 ```
