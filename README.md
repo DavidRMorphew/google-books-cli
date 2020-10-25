@@ -115,5 +115,27 @@ For more on the word-wrap `.fit` method, see https://github.com/pazdera/word_wra
 
 ## Contributing
 
+Pull requests are welcome. If you want to make major changes, please open an issue first, in order to discuss what major issue you would like to change.
+
+Please update tests where appropriate.
+
+## Roadmap
+
+This CLI has room for expansion by book-listing and formatting modifications. 
+
+Book-Listing: currently, books are listed by title before a user can make a book selection. It would not be hard to modify the list. One could start with something along the lines of the following CLI method with the existing code:
+
+```bash
+def display_books_by_attribute(attribute)
+    Book.all.each.with_index(1) do |book, index|    
+        puts "(#{index}) " + book.send("#{attribute}")
+        end
+    end
+```
+
+* The code for the user-selection-of-a-book method (`ask_user_for_book_choice`) would need to be modified to use the results of this method.
+
+Formatting: while the formatting for author names has been standardized, titles and subtitles could undergo modification for standardization, with code that splits the title string into array elements, checks to see if an element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word (except for non-initial articles and prepositions) before joining those elements back into a title string.
+
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://opensource.org/licenses/MIT)
