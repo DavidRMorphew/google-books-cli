@@ -3,7 +3,7 @@ class CLI
     def start
         @first_ask = "yes"
         @full_exit = "no"
-        puts "\nWelcome!".light_blue
+        puts "\nWelcome to 'Object-Oriented Programming' books on Google Books!".light_blue
         API.fetch_free_books
         self.book_list_by_title
     end
