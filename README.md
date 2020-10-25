@@ -116,3 +116,4 @@ For more on the word-wrap `.fit` method, see https://github.com/pazdera/word_wra
 ## Contributing
 
 ## License
+[MIT](https://choosealicense.com/licenses/mit/)
