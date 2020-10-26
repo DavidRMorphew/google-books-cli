@@ -84,7 +84,6 @@ Please enter a number between 1 and 40 for more information on a book.
 =======
 
 ```
-![Image of Books!](https://i.imgur.com/tisbV2F.jpeg)
 
 * **(b)** If the user enters "exit", they are given a goodby message:
 
@@ -107,11 +106,13 @@ Would you like to see the list of books by titles again?
  ```
 The user may repeat the process of browsing books by title **(1)**, and viewing the details of a book **(2)** as many times as they would like until they choose to exit the program at **(1)(b)** or **(2)(b)**.
 
+![Image of Books!](https://i.imgur.com/tisbV2F.jpeg)
+
 ## Customizing Word-Wrap Output
 
-For certain portions of the output, such as the book description, the output of wrapped text is customizable by line width and you may want to change the word-wrap width if your terminal size and text size output broken lines of text where wrapped. 
+For certain portions of the output, such as the book description, the output of wrapped text is customizable by line width and you may want to change the word-wrap width. 
 
-In CLI.rb, you can adjust the width by passing in a larger or smaller integer as the width_argument to the `.fit(width_argument)` method (in l. 64 and l. 76), which are currently set at a width of '80':
+In the CLI.rb file, you can adjust the width by passing in a larger or smaller integer as the width_argument to the `.fit(width_argument)` method (in l. 64 and l. 76), which are currently set at a width of '80':
 
 ```bash
 puts " Description: \n".green + "#{book.description}".fit(80).light_green if book.description
@@ -120,7 +121,7 @@ For more on the word-wrap `.fit` method, see https://github.com/pazdera/word_wra
 
 ## Contributing
 
-Pull requests are welcome. If you want to make major changes, please open an issue first, in order to discuss what major issue you would like to change.
+Pull requests are welcome. If you want to make major changes, please open an issue first to discuss the proposed change.
 
 Please update tests where appropriate.
 
@@ -138,9 +139,9 @@ def display_books_by_attribute(attribute)
     end
 ```
 
-* The code for the user-selection-of-a-book method (`ask_user_for_book_choice`) would need to be modified to use the results of this method.
+* The code for the user-selection-of-a-book method (`ask_user_for_book_choice`) would need to be modified to use the results of the new `display_books_by_attribute()` method.
 
-Formatting: while the formatting for author names has been standardized, titles and subtitles could undergo modification for standardization, with code that splits the title string into array elements, checks to see if an element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word (except for non-initial articles and prepositions) before joining those elements back into a title string.
+Formatting: formatting for author names has been standardized, but titles and subtitles could also be standardized. One could, for instance, write code that splits the title string into array elements, checks to see if an element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word (except for non-initial articles and prepositions) before joining those elements back into a string.
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
