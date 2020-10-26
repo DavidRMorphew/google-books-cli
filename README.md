@@ -30,26 +30,15 @@ ruby bin/run
 
 ## Usage
 
-**(1)** 
 After starting, this program greets the user and asks if they would like to see a list of books by title.
 
+If the user chooses to browse the list of titles, a list of numbered titles (1–40) is displayed, and the user is prompted to choose a book to see more details.
 
+Entering a valid number between 1 and 40, without any non-digit characters, will display the details of the selected book.
 
-* **(a)** If the user enters 'yes' or 'y', a numbered list of 40 titles appears: 
+After the details are displayed, the user is asked if they would like to see the book list again and the entire process repeats, unless the user chooses to exit the program. 
 
-* **(b)** Any other key exits the program with a goodbye message:
-
-**(2)** If the user has chosen to browse the list of titles **(1)(b)**, they are prompted to choose a book for more details:
-
-* **(a)** If the user enters a valid number between 1 and 40, without any non-digit characters, then the selected book's details will be displayed:
-
-
-* **(b)** If the user enters 'exit', they are given a goodby message:
-
-* **(c)** Any other user input will lead the program to repeat the prompt **(2)**:
-
-**(3)** If the user chose to see further details on a book **(2)(a)**, after the details are displayed, the user is asked if they would like to see the book list again:
-The user may repeat the process of browsing books by title **(1)**, and viewing the details of a book **(2)** as many times as they would like until they choose to exit the program at **(1)(b)** or **(2)(b)**.
+At each prompt, the user is given the option of exiting the program.
 
 ## Contributing
 
