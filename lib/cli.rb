@@ -5,10 +5,10 @@ class CLI
         @full_exit = "no"
         puts "\nWelcome to 'Object-Oriented Programming' books on Google Books!".light_blue
         API.fetch_free_books
-        self.book_list_by_title
+        self.list_books_by_title?
     end
 
-    def book_list_by_title
+    def list_books_by_title?
         if @first_ask == "yes"
             puts "\nWould you like to see a list of books by title?".light_red
             puts " Type 'yes' or 'y' to see the book list or any other key to exit.\n".light_red
@@ -27,7 +27,7 @@ class CLI
             self.display_books_by_title
             sleep(2)
             self.ask_user_for_book_choice
-            self.book_list_by_title unless @full_exit == "yes"
+            self.list_books_by_title? unless @full_exit == "yes"
         else
             self.exit_program
         end
