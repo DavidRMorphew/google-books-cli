@@ -8,7 +8,7 @@ You, as the user, can then select a book to get more information such as author(
 
 ## Installation 
 
-To install the program, open Terminal and run the following command:
+To install the program, open your Terminal and run the following command:
 
 ```bash
 git clone git@github.com:DavidRMorphew/google-books-cli.git
@@ -85,7 +85,7 @@ Please enter a number between 1 and 40 for more information on a book.
 
 ```
 
-* **(b)** If the user enters "exit", they are given a goodby message:
+* **(b)** If the user enters 'exit', they are given a goodby message:
 
 ```
 Goodbye! Feel free to come back!
@@ -98,7 +98,7 @@ Please enter a number between 1 and 40 for more information on a book.
  Or type 'exit' to exit.
  ```
 
-**(3)** If the user chose to see further details on a book **(2)(a)**, the user is then asked if they would like to see the book list again:
+**(3)** If the user chose to see further details on a book **(2)(a)**, after the details are displayed, the user is asked if they would like to see the book list again:
 
 ```
 Would you like to see the list of books by titles again?
@@ -110,7 +110,7 @@ The user may repeat the process of browsing books by title **(1)**, and viewing 
 
 ## Customizing Word-Wrap Output
 
-For certain portions of the output, such as the book description, the output of wrapped text is customizable by line width and you may want to change the word-wrap width. 
+For certain portions of the output, such as the book description, the output of wrapped text is customizable by line-width and you may want to change the word-wrap width to accommodate your terminal and font-size. 
 
 In the CLI.rb file, you can adjust the width by passing in a larger or smaller integer as the width_argument to the `.fit(width_argument)` method (in l. 64 and l. 76), which are currently set at a width of '80':
 
@@ -127,9 +127,9 @@ Please update tests where appropriate.
 
 ## Roadmap
 
-This CLI has room for expansion by book-listing and formatting modifications. 
+This CLI has room for expansion in at least two areas **(i)** alternative book-listing and **(ii)** formatting modifications. 
 
-Book-Listing: currently, books are listed by title before a user can make a book selection. It would not be hard to modify the list. One could start with something along the lines of the following CLI method with the existing code:
+**(i)** Book-Listing: currently, books are listed by title before a user can make a book selection. It would not be hard to modify the listing by a different attribute, such as by 'author', and one could start with something along the lines of the following CLI method to use with the existing code:
 
 ```bash
 def display_books_by_attribute(attribute)
@@ -141,7 +141,7 @@ def display_books_by_attribute(attribute)
 
 * The code for the user-selection-of-a-book method (`ask_user_for_book_choice`) would need to be modified to use the results of the new `display_books_by_attribute()` method.
 
-Formatting: formatting for author names has been standardized, but titles and subtitles could also be standardized. One could, for instance, write code that splits the title string into array elements, checks to see if an element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word (except for non-initial articles and prepositions) before joining those elements back into a string.
+**Formatting**: formatting for author names has been standardized, but titles and subtitles could also be standardized. One could, for instance, write code that splits the title string into array elements, checks to see if an element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word (except for non-initial articles and prepositions) before joining those elements back into a string.
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
