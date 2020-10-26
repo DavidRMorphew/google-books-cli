@@ -1,4 +1,4 @@
-# Fetching and Displaying "Object-Oriented Programming" Books in Google Books
+# Fetching and Displaying "Object-Oriented Programming" Books from Google Books
 
 Fetching data from the Google Books API, this Ruby CLI Program lets you browse the titles of the top 40 search results for books on Object-Oriented Computer Programming.
 
@@ -35,7 +35,7 @@ After starting, this program greets the user and asks if they would like to see 
 Welcome to 'Object-Oriented Programming' books on Google Books!
 
 Would you like to see a list of books by title?
- Type 'yes' to see the book list or any other key to exit.
+ Type 'yes' or 'y' to see the book list or any other key to exit.
 ```
 
 * **(a)** If the user enters 'yes' or 'y', a numbered list of 40 titles appears: 
@@ -102,7 +102,7 @@ Please enter a number between 1 and 40 for more information on a book.
 
 ```
 Would you like to see the list of books by titles again?
- Type 'yes' to see the book list or any other key to exit.
+ Type 'yes' or 'y' to see the book list or any other key to exit.
  ```
 The user may repeat the process of browsing books by title **(1)**, and viewing the details of a book **(2)** as many times as they would like until they choose to exit the program at **(1)(b)** or **(2)(b)**.
 
@@ -135,13 +135,13 @@ This CLI has room for expansion in at least two areas **(i)** alternative book-l
 def display_books_by_attribute(attribute)
     Book.all.each.with_index(1) do |book, index|    
         puts "(#{index}) " + book.send("#{attribute}")
-        end
     end
+end
 ```
 
 * The code for the user-selection-of-a-book method (`ask_user_for_book_choice`) would need to be modified to use the results of the new `display_books_by_attribute()` method.
 
-**Formatting**: formatting for author names has been standardized, but titles and subtitles could also be standardized. One could, for instance, write code that splits the title string into array elements, checks to see if an element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word (except for non-initial articles and prepositions) before joining those elements back into a string.
+**Formatting**: formatting for author names has been standardized, but titles and subtitles could also be standardized. One could, for instance, write code that splits the title string into array of word elements, checks to see if a word element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word element (except for non-initial articles and prepositions) before joining those word elements back into a string.
 
 ## License
 [MIT](https://github.com/DavidRMorphew/google-books-cli/blob/main/LICENSE.txt)
