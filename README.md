@@ -144,4 +144,4 @@ def display_books_by_attribute(attribute)
 **Formatting**: formatting for author names has been standardized, but titles and subtitles could also be standardized. One could, for instance, write code that splits the title string into array elements, checks to see if an element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word (except for non-initial articles and prepositions) before joining those elements back into a string.
 
 ## License
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](https://github.com/DavidRMorphew/google-books-cli/blob/main/LICENSE.txt)
