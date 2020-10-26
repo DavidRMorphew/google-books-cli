@@ -11,11 +11,11 @@ class CLI
     def book_list_by_title
         if @first_ask == "yes"
             puts "\nWould you like to see a list of books by title?".light_red
-            puts " Type 'yes' to see the book list or any other key to exit.\n".light_red
+            puts " Type 'yes' or 'y' to see the book list or any other key to exit.\n".light_red
             @first_ask = "no"
         else
             puts "\nWould you like to see the list of books by titles again?".light_red
-            puts " Type 'yes' to see the book list or any other key to exit.\n".light_red
+            puts " Type 'yes' or 'y' to see the book list or any other key to exit.\n".light_red
         end
         
         user_input = gets.strip.downcase
