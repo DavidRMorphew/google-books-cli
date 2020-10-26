@@ -143,5 +143,8 @@ end
 
 **Formatting**: formatting for author names has been standardized, but titles and subtitles could also be standardized. One could, for instance, write code that splits the title string into array of word elements, checks to see if a word element is an initial or non-initial article ('a', 'an', 'the') or preposition (e.g. 'with') and then capitalizes each word element (except for non-initial articles and prepositions) before joining those word elements back into a string.
 
+## For More Information
+Feel free to check out my [blog post](https://davidrmorphew.medium.com/booking-my-first-coding-project-fba0da20808e) on this program and leave a comment.
+
 ## License
 [MIT](https://github.com/DavidRMorphew/google-books-cli/blob/main/LICENSE.txt)
