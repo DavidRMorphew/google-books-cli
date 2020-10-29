@@ -38,6 +38,8 @@ Entering a valid number between 1 and 40, without any non-digit characters, will
 
 After the details are displayed, the user is asked if they would like to see the book list again, and the entire process repeats—until the user chooses to exit the program.
 
+You can also watch a video [here](https://youtu.be/-40UEhju1WI) on how to use the program.
+
 ## Contributing
 
 Pull requests are welcome. If you want to make major changes, please open an issue first to discuss the proposed change.
