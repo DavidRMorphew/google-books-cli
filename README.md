@@ -19,7 +19,7 @@ gem install word_wrap
 
 The program is set up to use an API key, but currently you can use the program without one.
 * If you want to use an API key, you will need to [generate one](https://cloud.google.com/docs/authentication/api-keys) with Google Books, and you can include that key in a `.env` file as explained [here](https://medium.com/@daniaherrera/how-to-use-dotenv-ruby-gem-to-secure-your-api-keys-92382aab888a). 
-* If you don't want to use one, remove `&key=#{ENV["GBOOKS_API_KEY"]}` from the end of the url in l. 7 of the `API.rb` file and delete l. 7 (`require 'dotenv/load'`) in the `environment.rb` file.
+* If you don't want to use one, remove `&key=#{ENV["GBOOKS_API_KEY"]}` from the end of the url in l. 7 of the `API.rb` file and delete l. 5 (`require 'dotenv/load'`) in the `environment.rb` file.
 ## Starting the Program
 
 Once installed, you can load the program from your terminal by using the following commands:
