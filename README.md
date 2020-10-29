@@ -11,7 +11,7 @@ To install the program, open your Terminal and run the following command:
 ```bash
 git clone git@github.com:DavidRMorphew/google-books-cli.git
 ```
-For the customized output to work, you will also want to install the `colorize` and the `word-wrap` gems:
+For the customized output to work, you will also want to install the `colorize` and the `word-wrap` gems (see the end of my [blog post](https://davidrmorphew.medium.com/booking-my-first-coding-project-fba0da20808e) for more on customizing `word-wrap`):
 ```bash
 gem install colorize
 gem install word_wrap
