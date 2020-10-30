@@ -23,7 +23,6 @@ class CLI
         if user_input == "yes" || user_input == "y"
             puts "\nEnjoy browsing by title!\n".light_yellow
             sleep(1)
-           
             self.display_books_by_title
             sleep(2)
             self.ask_user_for_book_choice
@@ -60,6 +59,7 @@ class CLI
 
     def display_book_details(book)
         puts "\n======="
+        
         if book.subtitle
             puts "\n Title: ".magenta + "#{book.title}: #{book.subtitle}".fit(80).light_magenta
         else

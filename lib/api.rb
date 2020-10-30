@@ -1,4 +1,4 @@
-require 'pry'
+
 
 class API
     PROGRAMMING_LANGUAGES = ["C", "C#", "C++", "Java", "Python", "JavaScript", "Ruby", "Eiffel", "Smalltalk", "R"]
